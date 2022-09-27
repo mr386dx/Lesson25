@@ -12,3 +12,16 @@ Students
 db.students.find(
   {name: RegExp("^A"),'scores.score': {$gt: 80}}
 )
+
+books
+db.books.aggregate(
+[{
+ $match: {
+  categories: 'Internet'
+ }
+}, {
+ $group: {
+  _id: '$authors'
+ }
+}]
+)
